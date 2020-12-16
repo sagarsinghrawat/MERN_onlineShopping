@@ -1,6 +1,6 @@
-import asyncHandler from 'express-async-handler';
-import jwt from 'jsonwebtoken';
-import User from '../schema/userSchema.js';
+const asyncHandler = require('express-async-handler')
+const jwt = require('jsonwebtoken')
+const User = require('../schema/userSchema')
 
 const protect = asyncHandler( async ( req, res, next ) => {
 
@@ -37,7 +37,7 @@ const isAdmin = asyncHandler( async ( req, res, next ) => {
     }
 })
 
-export { 
+module.exports = { 
     protect,
     isAdmin
 }
