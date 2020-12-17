@@ -67,10 +67,54 @@ const products = [
     brand: 'Amazon',
     category: 'Electronics',
     price: 29.99,
-    countInStock: 0,
+    countInStock: 5,
     rating: 4,
     numReviews: 12,
   },
+  {
+    name: 'TCL 100 cm Android Smart LED TV',
+    image: '/images/ledtv.jpg',
+    description: 'Full HD (1920 x 1080) | AI-IN | Built-in WiFi | Android | Built-in Chromecast | Dual Core MALI 470 Graphics Processor | Prime video | Youtube | Netflix | Voice Search',
+    brand: 'Whirlpool',
+    category: 'telivsion',
+    price: 328.63,
+    countInStock: 9,
+    rating: 6,
+    numReviews: 8 
+  },
+  {
+    name: 'Lenovo IdeaPad Flex 5 AMD Ryzen 5',
+    image: '/images/laptop.jpg',
+    description: 'Processor: 4th Gen AMD Ryzen 5 (4500U) | Speed: 2.3 GHz (Base) - 4.0 GHz (Max) | 6 Cores | 8MB Cache OS: Pre-Loaded Windows 10 Home with Lifetime Validity Pre-Installed: MS Office Home and Student 2019 Memory and Storage: 8GB RAM DDR4-3200, Upgradable up to 16GB | 512GB SSD',
+    brand: 'Lenovo',
+    category: 'Laptop',
+    price: 808.22,
+    countInStock: 4,
+    rating: 8,
+    numReviews: 5 
+  },
+  {
+    name: 'Apple Watch Series 3 (GPS, 42mm)',
+    image: '/images/watch.jpg',
+    description: 'GPS Optical heart sensor ,Apple Watch app ,Digital crown ,S3 with dual-core processor Accelerometer and gyroscope ,Swimproof',
+    brand: 'Apple',
+    category: 'Watch',
+    price: 328.63,
+    countInStock: 4,
+    rating: 9,
+    numReviews: 13 
+  },
+  {
+    name: 'Realme Buds 2 with Mic',
+    image: '/images/earbuds.jpg',
+    description: 'Enjoy the powerful 11.2mm bass boost driver which consist of multi-layer composite diaphragm, bringing you a deep and powerful, yet accurate bass response',
+    brand: 'RealMe',
+    category: 'Electronics',
+    price: 123.67,
+    countInStock: 5,
+    rating: 7,
+    numReviews: 4 
+  }
 ]
 
 module.exports = products
