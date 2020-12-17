@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path')
-const morgon = require('morgan');
+const morgan = require('morgan');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const productRoutes = require('./routes/productRoutes')
@@ -18,7 +18,7 @@ dotenv.config();
 connectDB();
 
 if( process.env.NODE_ENV === 'development'){
-    app.use(morgon('dev'));
+    app.use(morgan('dev'));
 }
 
 app.use('/api/products', productRoutes);
