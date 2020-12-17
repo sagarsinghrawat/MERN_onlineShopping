@@ -101,7 +101,7 @@ const addProductByAdmin = asyncHandler( async( req, res) => {
 
 const updateProductByAdmin = asyncHandler( async( req, res) => {
 
-    const { name, description, image, category, price, brand, countInStock, numReviews } = req.body;
+    const { name, description, image, category, price, brand, countInStock } = req.body;
 
     const product = await Product.findById(req.params.id);
     if( product){
@@ -110,7 +110,7 @@ const updateProductByAdmin = asyncHandler( async( req, res) => {
         product.price = price;
         product.description = description;
         product.brand = brand;
-        product.image = name;
+        product.image = image;
         product.countInStock = countInStock;
         product.category = category;
 
