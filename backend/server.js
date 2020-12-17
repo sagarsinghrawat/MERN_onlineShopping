@@ -18,7 +18,7 @@ dotenv.config();
 connectDB();
 
 if( process.env.NODE_ENV === 'development'){
-    app.use(morgon(dev));
+    app.use(morgon('dev'));
 }
 
 app.use('/api/products', productRoutes);
