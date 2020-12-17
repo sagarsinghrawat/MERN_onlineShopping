@@ -16,9 +16,9 @@ dotenv.config();
 
 connectDB();
 
-app.get('/', (req, res) => {
-    res.send('Api Running..')
-});
+// app.get('/', (req, res) => {
+//     res.send('Api Running..')
+// });
 
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
