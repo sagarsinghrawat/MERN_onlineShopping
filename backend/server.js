@@ -16,9 +16,7 @@ dotenv.config();
 
 connectDB();
 
-// app.get('/', (req, res) => {
-//     res.send('Api Running..')
-// });
+
 
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
@@ -28,6 +26,18 @@ app.use('/api/uploads', imageUploadRoutes);
 app.get('/api/config/paypal', ( req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID)
 })
+
+if( process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '/frontend/build')));
+
+    app.get('*', (req, res) => {
+        res.send(path.resolve(__dirname, 'frontend', 'build', 'index.html' ))
+    })
+} else {
+    app.get('/', (req, res) => {
+        res.send('Api Running..')
+    });
+}
 
 app.use('/images', express.static('/images') );
 
