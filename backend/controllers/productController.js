@@ -3,7 +3,7 @@ const Product = require('../schema/productSchema')
 
 const getProducts = asyncHandler( async( req, res) => {
 
-    const pageSize = 10;
+    const pageSize = 4;
     const page = Number(req.query.pageNumber) || 1;
 
     const product = req.query.keyword ? {
