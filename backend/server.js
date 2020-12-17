@@ -29,7 +29,7 @@ app.get('/api/config/paypal', ( req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID)
 })
 
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')) );
+app.use('/images', express.static('/images') );
 
 app.use(notFound)
 app.use(errorHandler);
