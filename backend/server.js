@@ -38,7 +38,8 @@ if( process.env.NODE_ENV === 'production' ) {
     })
 }
 
-app.use('/images', express.static('/images') );
+app.use(express.static('public'))
+app.use('/uploads', express.static(__dirname +'/images') );
 
 app.use(notFound)
 app.use(errorHandler);

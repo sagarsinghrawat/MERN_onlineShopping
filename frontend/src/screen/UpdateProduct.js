@@ -92,8 +92,6 @@ const UpdateProduct = ({match, history}) => {
         }));
     }
 
-    
-
 
     return (
         <>
