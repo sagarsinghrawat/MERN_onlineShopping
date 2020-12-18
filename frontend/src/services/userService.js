@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify'
 import { ORDER_LIST_MY_RESET } from '../utils/orderConstants';
 import { 
     USER_LOGIN_REQUEST, 
@@ -44,8 +45,10 @@ export const login = ( email, password ) => async( dispatch ) => {
         })
 
         localStorage.setItem('userInfo', JSON.stringify(data));
-    } catch (error) {
+        toast.success('Successfully Sign In')
 
+    } catch (error) {
+        toast.error('Invalid Email id or Password')
         dispatch({
             type: USER_LOGIN_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
@@ -77,6 +80,7 @@ export const register = ( name, email, password ) => async( dispatch ) => {
         })
 
         localStorage.setItem('userInfo', JSON.stringify(data));
+        toast.success('Successfully Register')
     } catch (error) {
 
         dispatch({
@@ -87,7 +91,6 @@ export const register = ( name, email, password ) => async( dispatch ) => {
 }
 
 export const logout = () => async (dispatch) => {
-
     localStorage.removeItem('userInfo');
     dispatch({ type: USER_LOGOUT })
     dispatch({type: USER_DETAILS_RESET })

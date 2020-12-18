@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { BrowserRouter, Route } from  'react-router-dom'
+import { ToastContainer } from 'react-toastify';
 import Header from './component/Header';
 import Footer from './component/Footer';
 import HomeScreen from './screen/Home';
@@ -18,11 +19,13 @@ import AdminEditScreen from './screen/AdminEdit';
 import ProductList from './screen/ProductList';
 import UpdateProduct from './screen/UpdateProduct';
 import OrderList from './screen/OrderList'
+import 'react-toastify/dist/ReactToastify.css'
 
 const App = () => {
   return (
     <BrowserRouter>
       <Header />
+      <ToastContainer />
       <main className="py-3">
         <Container>
           <Route path='/search/:keyword' component={HomeScreen} exact/>
