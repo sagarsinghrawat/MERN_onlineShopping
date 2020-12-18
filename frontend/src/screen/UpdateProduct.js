@@ -55,27 +55,28 @@ const UpdateProduct = ({match, history}) => {
     },[ product, dispatch, match.params.id, successUpdate, history] )
 
     const imageUploadHandler = async (e) => {
-        const file = e.target.files[0]
+
+        const file = e.target.files[0];
         const formData = new FormData();
-        formData.append('image', file)
+        formData.append('file', file);
+        formData.append('upload_preset', 'shoppingCart')
+        formData.append('cloud_name', "dvgdpbm11");
+
         setImageUpload(true);
-        
         try {
-            const config = {
-                headers: {
-                    "Content-Type": "multipart/form-data"
-                }
-            }
-            
-            const { data } = await axios.post('/api/uploads', formData, config )
-            
-            setImage(data)
+
+            const imageURL = "https://api.cloudinary.com/v1_1/dvgdpbm11/image/upload"
+            const { data } = await axios.post( imageURL, formData );
+
+            setImage(data.url);
             setImageUpload(false);
 
-        } catch (error) {
+        } catch {
+
             console.log(error);
             setImageUpload(false);
         }
+        
     }
 
     const submitHandler = (e) => {

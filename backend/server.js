@@ -7,8 +7,6 @@ const productRoutes = require('./routes/productRoutes')
 const userRoutes = require('./routes/userRoutes')
 const orderRoutes = require('./routes/orderRoutes')
 const { notFound, errorHandler } = require('./middleware/errorMiddleware')
-const imageUploadRoutes = require('./routes/imageUploadRoutes');
-
 
 const app = express();
 app.use(express.json());
@@ -24,7 +22,6 @@ if( process.env.NODE_ENV === 'development'){
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
-app.use('/api/uploads', imageUploadRoutes);
 
 app.get('/api/config/paypal', ( req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID)
@@ -37,9 +34,6 @@ if( process.env.NODE_ENV === 'production' ) {
         res.sendFile(path.join(__dirname, '/../frontend/build', 'index.html'));
     })
 }
-
-app.use(express.static('public'))
-app.use('/uploads', express.static(__dirname +'/images') );
 
 app.use(notFound)
 app.use(errorHandler);
