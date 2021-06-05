@@ -7,7 +7,7 @@ import { listMyOrders } from '../services/orderService'
 import Message from '../component/Message';
 import Loader from '../component/Loader';
 
-const ProfileScreen = ({location, history }) => {
+const ProfileScreen = ({ history }) => {
 
     const [ name, setName ] = useState('');
     const [ email, setEmail ] = useState('');
@@ -56,7 +56,7 @@ const ProfileScreen = ({location, history }) => {
             <Col md={3}>
             <h2>USER PROFILE</h2>
             { message && <Message variant="danger">{message}</Message>}
-            { error && <Message variant="danger">{error}</Message> }
+            {/* { error && <Message variant="danger">{error}</Message> } */}
             { success && <Message variant="success">PROFILE UPDATE</Message> }
             { loading && <Loader/> }
             <Form onSubmit={submitHandler} >

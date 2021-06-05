@@ -1,4 +1,4 @@
-import axios from 'axios';
+import http from './httpServices';
 import { toast } from 'react-toastify'
 import { ORDER_LIST_MY_RESET } from '../utils/orderConstants';
 import { 
@@ -25,19 +25,9 @@ import {
 export const login = ( email, password ) => async( dispatch ) => {
 
     try {
-        dispatch({
-            type: USER_LOGIN_REQUEST
-        })
+        dispatch({  type: USER_LOGIN_REQUEST})
 
-        const config = {
-            headers: { 'Content-type': "application/json" }
-        }
-        const body = {
-            email, 
-            password
-        }
-
-        const { data } = await axios.post("/api/users/login", body, config )
+        const { data } = await http.post("/api/users/login", {email, password} )
 
         dispatch({
             type: USER_LOGIN_SUCCESS,
@@ -45,10 +35,13 @@ export const login = ( email, password ) => async( dispatch ) => {
         })
 
         localStorage.setItem('userInfo', JSON.stringify(data));
+
         toast.success('Successfully Sign In')
 
     } catch (error) {
+
         toast.error('Invalid Email id or Password')
+
         dispatch({
             type: USER_LOGIN_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
@@ -63,11 +56,7 @@ export const register = ( name, email, password ) => async( dispatch ) => {
 
         dispatch({ type: USER_REGISTER_REQUEST })
 
-        const config = {
-            headers : { "Content-type": "application/json"}
-        }
-
-        const { data } = await axios.post('/api/users', { name, email, password }, config )
+        const { data } = await http.post('/api/users', { name, email, password } )
 
         dispatch({
             type: USER_REGISTER_SUCCESS,
@@ -81,7 +70,12 @@ export const register = ( name, email, password ) => async( dispatch ) => {
 
         localStorage.setItem('userInfo', JSON.stringify(data));
         toast.success('Successfully Register')
+
     } catch (error) {
+
+        if (error.response && error.response.status === 400) {
+            toast.error(error.response.data);
+          }
 
         dispatch({
             type: USER_REGISTER_FAIL,
@@ -96,7 +90,7 @@ export const logout = () => async (dispatch) => {
     dispatch({type: USER_DETAILS_RESET })
     dispatch({ type: ORDER_LIST_MY_RESET })
     dispatch({ type: USER_LIST_RESET })
-    window.location = '/login'
+    // window.location = '/login'
 }
 
 export const getUserDetails = ( id ) => async( dispatch, getState ) => {
@@ -109,12 +103,11 @@ export const getUserDetails = ( id ) => async( dispatch, getState ) => {
 
         const config = {
             headers : { 
-                "Content-type": "application/json",
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
 
-        const { data } = await axios.get(`/api/users/${id}`, config )
+        const { data } = await http.get(`/api/users/${id}`, config )
 
         dispatch({
             type: USER_DETAILS_SUCCESS,
@@ -140,12 +133,11 @@ export const updateUserProfile = ( user ) => async( dispatch, getState ) => {
 
         const config = {
             headers : { 
-                "Content-type": "application/json",
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
 
-        const { data } = await axios.put(`/api/users/profile`, user  , config )
+        const { data } = await http.put(`/api/users/profile`, user  , config )
 
         dispatch({
             type: USER_UPDATE_PROFILE_SUCCESS,
@@ -175,7 +167,7 @@ export const listUsers = () => async( dispatch, getState ) => {
             }
         }
 
-        const { data } = await axios.get(`/api/users`, config )
+        const { data } = await http.get(`/api/users`, config )
 
         dispatch({
             type: USER_LIST_SUCCESS,

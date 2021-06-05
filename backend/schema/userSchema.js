@@ -41,11 +41,11 @@ function validateUser(user) {
     const schema = Joi.object({
         name: Joi.string().required(),
         email: Joi.string().required().email(),
-        password: Joi.string().min(5).max(50).required(),
-        isAdmin: Joi.boolean().required()
+        password: Joi.string().min(5).max(50).required()
     })
 
     return schema.validate(user);
 }
 
-module.exports = User
+exports.User = User
+exports.validateUser = validateUser

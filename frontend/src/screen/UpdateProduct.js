@@ -25,12 +25,9 @@ const UpdateProduct = ({match, history}) => {
 
     const { loading, product, error } = useSelector( state => state.productDetails )
 
-    
-
     const { 
         loading: loadingUpdate, 
-        success: successUpdate, 
-        error: errorUpdate } = useSelector( state => state.adminUpdateProduct );
+        success: successUpdate } = useSelector( state => state.adminUpdateProduct );
 
     useEffect( () => {
         if( successUpdate ){
@@ -105,7 +102,6 @@ const UpdateProduct = ({match, history}) => {
             <FormContainer>
             <h1>UPDATE PRODUCT</h1>
             { loadingUpdate &&  <Loader/>}
-            { errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
             { loading ? <Loader/> : error ? <Message variant="danger">{error}</Message> : (
                 <Form onSubmit={submitHandler} >
                 <Form.Group controlId="name">

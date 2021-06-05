@@ -1,4 +1,5 @@
-import axios from 'axios'
+import http from './httpServices';
+import { toast } from 'react-toastify'
 import { 
     ADMIN_DELETE_FAIL, 
     ADMIN_DELETE_REQUEST, 
@@ -34,12 +35,10 @@ export const userDeleteByAdmin = (id) => async( dispatch, getState ) => {
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
+        
+        await http.delete(`/api/users/${id}`, config )
 
-        await axios.delete(`/api/users/${id}`, config )
-
-        dispatch({
-            type: ADMIN_DELETE_SUCCESS,
-        })
+        dispatch({ type: ADMIN_DELETE_SUCCESS })
 
     } catch (error) {
 
@@ -60,12 +59,11 @@ export const userUpdateByAdmin = (user) => async( dispatch, getState ) => {
 
         const config = {
             headers : { 
-                "Content-type": "application/json",
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
 
-        const { data } = await axios.put(`/api/users/${user._id}`, user, config )
+        const { data } = await http.put(`/api/users/${user._id}`, user, config )
 
         dispatch({ type: USER_UPDATE_BY_ADMIN_SUCCESS })
 
@@ -97,7 +95,7 @@ export const deleteProductByAdmin = (id) => async( dispatch, getState ) => {
             }
         }
 
-        await axios.delete(`/api/products/${id}`, config )
+        await http.delete(`/api/products/${id}`, config )
 
         dispatch({ type: PRODUCT_DELETE_BY_ADMIN_SUCCESS })
 
@@ -120,12 +118,11 @@ export const productAddByAdmin = () => async( dispatch, getState ) => {
 
         const config = {
             headers : { 
-                //"Content-type": "application/json",
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
 
-        const { data } = await axios.post(`/api/products`, {}, config )
+        const { data } = await http.post(`/api/products`, {}, config )
 
         dispatch({ 
             type: PRODUCT_ADD_BY_ADMIN_SUCCESS,
@@ -151,12 +148,11 @@ export const updateProductByAdmin = (product) => async( dispatch, getState ) => 
 
         const config = {
             headers : { 
-                "Content-type": "application/json",
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
 
-        const { data } = await axios.put(`/api/products/${product._id}`, product, config )
+        const { data } = await http.put(`/api/products/${product._id}`, product, config )
 
         dispatch({ 
             type: PRODUCT_UPDATE_BY_ADMIN_SUCCESS,
@@ -165,6 +161,10 @@ export const updateProductByAdmin = (product) => async( dispatch, getState ) => 
 
     } catch (error) {
 
+        if (error.response && error.response.status === 400) {
+            toast.error(error.response.data);
+          }
+        
         dispatch({
             type: PRODUCT_UPDATE_BY_ADMIN_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
@@ -186,7 +186,7 @@ export const fetchOrdersByAdmin = () => async( dispatch, getState ) => {
             }
         }
 
-        const { data } = await axios.get(`/api/orders/`, config )
+        const { data } = await http.get(`/api/orders/`, config )
 
         dispatch({ 
             type: GET_ORDERS_BY_ADMIN_SUCCESS,

@@ -64,7 +64,6 @@ const ProductList = ({ history, match }) => {
             <Col className="text-right">
                 <Button className="my-3" onClick={createProductHandler}>
                     <i className="fas fa-plus"></i>&nbsp;&nbsp;CREATE PRODUCT
-
                 </Button>
             </Col>
         </Row>

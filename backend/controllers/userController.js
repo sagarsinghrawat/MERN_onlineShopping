@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcryptjs')
-const User = require('../schema/userSchema')
+const { User, validateUser } = require('../schema/userSchema')
 const generateToken = require('../utils/generateToken')
 
 const authenticateUser = asyncHandler( async( req, res ) => {
@@ -25,6 +25,9 @@ const authenticateUser = asyncHandler( async( req, res ) => {
 });
 
 const userRegistration = asyncHandler( async( req, res ) => {
+
+    const { error } = validateUser(req.body);
+    if( error ) return res.status(400).send(error.details[0].message );
 
     const { name, email, password } = req.body;
     
@@ -76,12 +79,12 @@ const getUserProfile = asyncHandler( async( req, res ) => {
     }
 });
 
-const updatetUserProfile = asyncHandler( async( req, res ) => {
+const updateUserProfile = asyncHandler( async( req, res ) => {
 
     const user = await User.findById(req.user.id)
 
     if( user ){
-
+        
         user.name = req.body.name || user.name;
         user.email = req.body.email || user.email;
 
@@ -104,11 +107,9 @@ const updatetUserProfile = asyncHandler( async( req, res ) => {
     }
 });
 
-
-
 module.exports = { 
     authenticateUser,
     userRegistration,
     getUserProfile,
-    updatetUserProfile
+    updateUserProfile
 }

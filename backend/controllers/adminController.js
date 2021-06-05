@@ -1,6 +1,6 @@
 const asyncHandler  = require('express-async-handler');
-const User = require('../schema/userSchema')
-const Product = require('../schema/productSchema')
+const { User, validateUser } = require('../schema/userSchema')
+const { Product, validateProduct } = require('../schema/productSchema')
 const Order = require('../schema/orderSchema')
 
 const getUsersByAdmin = asyncHandler( async( req, res ) => {
@@ -39,6 +39,9 @@ const updateUserByAdmin = asyncHandler( async( req, res ) => {
     const user = await User.findById(req.params.id)
 
     if( user ){
+
+        const { error } = validateUser(req.body)
+        if( error ) return res.status(400).send(error.details[0].message);
 
         user.name = req.body.name || user.name;
         user.email = req.body.email || user.email;
@@ -101,6 +104,9 @@ const addProductByAdmin = asyncHandler( async( req, res) => {
 
 const updateProductByAdmin = asyncHandler( async( req, res) => {
 
+    const { error } = validateProduct(req.body);
+    if( error )  return res.status(400).send(error.details[0].message);
+    
     const { name, description, image, category, price, brand, countInStock } = req.body;
 
     const product = await Product.findById(req.params.id);
