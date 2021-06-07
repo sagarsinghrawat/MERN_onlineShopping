@@ -39,10 +39,7 @@ const updateUserByAdmin = asyncHandler( async( req, res ) => {
     const user = await User.findById(req.params.id)
 
     if( user ){
-
-        const { error } = validateUser(req.body)
-        if( error ) return res.status(400).send(error.details[0].message);
-
+        
         user.name = req.body.name || user.name;
         user.email = req.body.email || user.email;
         user.isAdmin = req.body.isAdmin || user.isAdmin;

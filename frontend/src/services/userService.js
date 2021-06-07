@@ -21,6 +21,7 @@ import {
     USER_LIST_FAIL,
     USER_LIST_RESET
 } from '../utils/userConstants';
+import errorHandler from '../errorHandler';
 
 export const login = ( email, password ) => async( dispatch ) => {
 
@@ -72,11 +73,7 @@ export const register = ( name, email, password ) => async( dispatch ) => {
         toast.success('Successfully Register')
 
     } catch (error) {
-
-        if (error.response && error.response.status === 400) {
-            toast.error(error.response.data);
-          }
-
+        errorHandler(error);
         dispatch({
             type: USER_REGISTER_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
@@ -115,7 +112,7 @@ export const getUserDetails = ( id ) => async( dispatch, getState ) => {
         })
 
     } catch (error) {
-
+        errorHandler(error);
         dispatch({
             type: USER_DETAILS_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
@@ -144,8 +141,9 @@ export const updateUserProfile = ( user ) => async( dispatch, getState ) => {
             payload: data
         })
 
+        toast.success("Profile Successfully Updated");
     } catch (error) {
-
+        errorHandler(error);
         dispatch({
             type: USER_UPDATE_PROFILE_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
@@ -175,7 +173,7 @@ export const listUsers = () => async( dispatch, getState ) => {
         })
 
     } catch (error) {
-
+        errorHandler(error);
         dispatch({
             type: USER_LIST_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message

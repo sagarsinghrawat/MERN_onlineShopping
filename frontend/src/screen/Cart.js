@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Card, ListGroup, Image, Form, Button } from 'react-bootstrap';
 import Message from '../component/Message';
 import { addToCart, removeFromCart } from '../services/cartService';
+import { LinkContainer } from 'react-router-bootstrap';
 
 
 const CartScreen = ({ match, location, history }) => {
@@ -61,7 +62,7 @@ const CartScreen = ({ match, location, history }) => {
                                             <Image src={item.image} alt={item.name} fluid rounded />
                                         </Col>
                                         <Col md={3}>
-                                            <Link to={`/products/${item.product}`}>{item.name}</Link>
+                                            <Link to={`/product/${item.product}`}>{item.name}</Link>
                                         </Col>
                                         <Col md={2}>{item.price}</Col>
                                         <Col md={2}>

@@ -13,6 +13,7 @@ import {
     TOP_RATED_PRODUCT_FAIL} from '../utils/productConstants';
     
 import http from './httpServices';
+import errorHandler from '../errorHandler';
 
 export const listProducts = ( keyword = '', pageNumber = '') => async (dispatch) => {
     try {
@@ -26,6 +27,7 @@ export const listProducts = ( keyword = '', pageNumber = '') => async (dispatch)
         })
         
     } catch (error) {
+        errorHandler(error);
         dispatch({
             type: PRODUCT_LIST_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
@@ -45,6 +47,7 @@ export const listProductDetails = (id) => async (dispatch) => {
         })
         
     } catch (error) {
+        errorHandler(error);
         dispatch({
             type: PRODUCT_DETAILS_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
@@ -69,6 +72,7 @@ export const reviewProduct = ( productId, review ) => async (dispatch, getState)
         dispatch({ type: PRODUCT_REVIEWS_SUCCESS })
         
     } catch (error) {
+        errorHandler(error);
         dispatch({
             type: PRODUCT_REVIEWS_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
@@ -88,6 +92,7 @@ export const listTopRatedProducts = () => async (dispatch, getState) => {
         })
         
     } catch (error) {
+        errorHandler(error);
         dispatch({
             type: TOP_RATED_PRODUCT_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message

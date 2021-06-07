@@ -25,15 +25,15 @@ const App = () => {
   return (
     <BrowserRouter>
       <Header />
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
       <main className="py-3">
         <Container>
           <Route path='/search/:keyword' component={HomeScreen} exact/>
           <Route path='/page/:pageNumber' component={HomeScreen} exact/>
           <Route path='/search/:keyword/page/:pageNumber' component={HomeScreen} exact/>
-          <Route path='/product/:id' component={ProductScreen} />
-          <Route path='/order/:id' component={OrderScreen} />
-          <Route path='/cart/:id?' component={CartScreen} />
+          <Route path='/product/:id' component={ProductScreen} exact />
+          <Route path='/order/:id' component={OrderScreen} exact />
+          <Route path='/cart/:id?' component={CartScreen} exact />
           <Route path='/admin/userlist' component={UserListScreen} />
           <Route path='/admin/productlist' component={ProductList} exact />
           <Route path='/admin/productlist/:pageNumber' component={ProductList} exact />

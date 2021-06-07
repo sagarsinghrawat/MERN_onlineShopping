@@ -1,7 +1,7 @@
 const products = [
   {
     name: 'Airpods Wireless Bluetooth Headphones',
-    image: '/images/airpods.jpg',
+    image: 'http://res.cloudinary.com/dvgdpbm11/image/upload/v1623079248/vdypyyb7vnjhoj2tvmdr.jpg',
     description:
       'Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working',
     brand: 'Apple',
@@ -13,7 +13,7 @@ const products = [
   },
   {
     name: 'iPhone 11 Pro 256GB Memory',
-    image: '/images/phone.jpg',
+    image: 'http://res.cloudinary.com/dvgdpbm11/image/upload/v1623079547/tia2mvusi0paby91khiu.jpg',
     description:
       'Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life',
     brand: 'Apple',
@@ -25,7 +25,7 @@ const products = [
   },
   {
     name: 'Cannon EOS 80D DSLR Camera',
-    image: '/images/camera.jpg',
+    image: 'http://res.cloudinary.com/dvgdpbm11/image/upload/v1623079317/ocypgf3sfvungknrwfxo.jpg',
     description:
       'Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design',
     brand: 'Cannon',
@@ -37,7 +37,7 @@ const products = [
   },
   {
     name: 'Sony Playstation 4 Pro White Version',
-    image: '/images/playstation.jpg',
+    image: 'http://res.cloudinary.com/dvgdpbm11/image/upload/v1623079381/wibytziuwzpnbqeznam9.jpg',
     description:
       'The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music',
     brand: 'Sony',
@@ -49,7 +49,7 @@ const products = [
   },
   {
     name: 'Logitech G-Series Gaming Mouse',
-    image: '/images/mouse.jpg',
+    image: 'http://res.cloudinary.com/dvgdpbm11/image/upload/v1623079411/vkhahuqs8dltyaeaafxg.jpg',
     description:
       'Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience',
     brand: 'Logitech',
@@ -61,7 +61,7 @@ const products = [
   },
   {
     name: 'Amazon Echo Dot 3rd Generation',
-    image: '/images/alexa.jpg',
+    image: 'http://res.cloudinary.com/dvgdpbm11/image/upload/v1623079599/s2ja3n0sca4rquipxthd.jpg',
     description:
       'Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space',
     brand: 'Amazon',
@@ -73,7 +73,7 @@ const products = [
   },
   {
     name: 'TCL 100 cm Android Smart LED TV',
-    image: '/images/ledtv.jpg',
+    image: 'http://res.cloudinary.com/dvgdpbm11/image/upload/v1623079629/kujoibsszh4yj9ydv3ol.jpg',
     description: 'Full HD (1920 x 1080) | AI-IN | Built-in WiFi | Android | Built-in Chromecast | Dual Core MALI 470 Graphics Processor | Prime video | Youtube | Netflix | Voice Search',
     brand: 'Whirlpool',
     category: 'telivsion',
@@ -84,7 +84,7 @@ const products = [
   },
   {
     name: 'Lenovo IdeaPad Flex 5 AMD Ryzen 5',
-    image: '/images/laptop.jpg',
+    image: 'http://res.cloudinary.com/dvgdpbm11/image/upload/v1623079662/vjstphyvkpamo530ifup.jpg',
     description: 'Processor: 4th Gen AMD Ryzen 5 (4500U) | Speed: 2.3 GHz (Base) - 4.0 GHz (Max) | 6 Cores | 8MB Cache OS: Pre-Loaded Windows 10 Home with Lifetime Validity Pre-Installed: MS Office Home and Student 2019 Memory and Storage: 8GB RAM DDR4-3200, Upgradable up to 16GB | 512GB SSD',
     brand: 'Lenovo',
     category: 'Laptop',
@@ -95,7 +95,7 @@ const products = [
   },
   {
     name: 'Apple Watch Series 3 (GPS, 42mm)',
-    image: '/images/watch.jpg',
+    image: 'http://res.cloudinary.com/dvgdpbm11/image/upload/v1623079691/okgruzez8j3hkhqeqmmk.jpg',
     description: 'GPS Optical heart sensor ,Apple Watch app ,Digital crown ,S3 with dual-core processor Accelerometer and gyroscope ,Swimproof',
     brand: 'Apple',
     category: 'Watch',
@@ -106,7 +106,7 @@ const products = [
   },
   {
     name: 'Realme Buds 2 with Mic',
-    image: '/images/earbuds.jpg',
+    image: 'http://res.cloudinary.com/dvgdpbm11/image/upload/v1623079714/gzerxvavasz68vl5qcm7.jpg',
     description: 'Enjoy the powerful 11.2mm bass boost driver which consist of multi-layer composite diaphragm, bringing you a deep and powerful, yet accurate bass response',
     brand: 'RealMe',
     category: 'Electronics',

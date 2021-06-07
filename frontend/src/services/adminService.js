@@ -21,6 +21,7 @@ import {
     USER_UPDATE_BY_ADMIN_SUCCESS 
     } from "../utils/adminConstants";
 import { USER_DETAILS_SUCCESS } from '../utils/userConstants';
+import errorHandler from '../errorHandler';
 
 export const userDeleteByAdmin = (id) => async( dispatch, getState ) => {
 
@@ -41,7 +42,7 @@ export const userDeleteByAdmin = (id) => async( dispatch, getState ) => {
         dispatch({ type: ADMIN_DELETE_SUCCESS })
 
     } catch (error) {
-
+        errorHandler(error);
         dispatch({
             type: ADMIN_DELETE_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
@@ -72,8 +73,9 @@ export const userUpdateByAdmin = (user) => async( dispatch, getState ) => {
             payload: data
         })
 
+        toast.success("Succesfully Updated");
     } catch (error) {
-
+        errorHandler(error);
         dispatch({
             type: USER_UPDATE_BY_ADMIN_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
@@ -98,9 +100,9 @@ export const deleteProductByAdmin = (id) => async( dispatch, getState ) => {
         await http.delete(`/api/products/${id}`, config )
 
         dispatch({ type: PRODUCT_DELETE_BY_ADMIN_SUCCESS })
-
+        toast.success("Successfully deleted");
     } catch (error) {
-
+        errorHandler(error);
         dispatch({
             type: PRODUCT_DELETE_BY_ADMIN_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
@@ -129,8 +131,9 @@ export const productAddByAdmin = () => async( dispatch, getState ) => {
             payload: data
          })
 
+         toast.success("product add successfully");
     } catch (error) {
-
+        errorHandler(error);
         dispatch({
             type: PRODUCT_ADD_BY_ADMIN_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
@@ -158,13 +161,10 @@ export const updateProductByAdmin = (product) => async( dispatch, getState ) => 
             type: PRODUCT_UPDATE_BY_ADMIN_SUCCESS,
             payload: data
          })
-
-    } catch (error) {
-
-        if (error.response && error.response.status === 400) {
-            toast.error(error.response.data);
-          }
         
+         toast.success("Product Successfully update");
+    } catch (error) {
+        errorHandler(error);
         dispatch({
             type: PRODUCT_UPDATE_BY_ADMIN_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
@@ -194,7 +194,7 @@ export const fetchOrdersByAdmin = () => async( dispatch, getState ) => {
          })
 
     } catch (error) {
-
+        errorHandler(error);
         dispatch({
             type: GET_ORDERS_BY_ADMIN_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message

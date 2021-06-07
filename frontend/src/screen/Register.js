@@ -6,6 +6,7 @@ import { register } from '../services/userService';
 import FormContainer from '../component/FormContainer';
 import Message from '../component/Message';
 import Loader from '../component/Loader';
+import {toast} from 'react-toastify'
 
 const RegisterScreen = ({location, history }) => {
 
@@ -29,7 +30,10 @@ const RegisterScreen = ({location, history }) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        if( password !== confirmPassword ) setMessage('passwords does not match');
+        if( password !== confirmPassword ){
+            toast.error("password does not match");
+            //setMessage('passwords does not match');
+        }
         else{
             dispatch(register(name, email, password))
         }
@@ -38,7 +42,7 @@ const RegisterScreen = ({location, history }) => {
     return (
         <FormContainer>
             <h1>SIGN UP</h1>
-            { message && <Message variant="danger">{message}</Message>}
+            {/* { message && <Message variant="danger">{message}</Message>} */}
             { loading && <Loader/> }
             <Form onSubmit={submitHandler} >
             <Form.Group controlId="name">
