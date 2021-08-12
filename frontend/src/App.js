@@ -42,7 +42,7 @@ const App = () => {
           <Route path='/admin/product/:id/edit' component={UpdateProduct} />
           <Route path='/shipping' component={ShippingScreen} exact />
           <Route path='/login' component={LoginScreen} exact />
-          <Route path='/register' component={RegisterScreen} />
+          <Route path='/register' component={RegisterScreen} exact />
           <Route path='/profile' component={ProfileScreen} />
           <Route path='/payment' component={PaymentScreen} />
           <Route path='/placeorder' component={PlaceOrderScreen} />

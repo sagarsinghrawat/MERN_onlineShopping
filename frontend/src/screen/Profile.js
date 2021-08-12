@@ -106,7 +106,16 @@ const ProfileScreen = ({ history }) => {
                 </Form>
             </Col>
             <Col md={9}>
-                <h2>MY ORDERS</h2>
+                <Row className="align-items-center">
+                    <Col>
+                        <h1>MY ORDERS</h1>
+                    </Col>
+                    <Col className="text-right">
+                        <Button type="submit" variant="primary" onClick={ () => dispatch(listMyOrders())}>
+                            Refresh
+                        </Button>
+                    </Col>
+                </Row>
                 { loadingOrders ? <Loader /> : errorOrders ? <Message variant="danger">{errorOrders}</Message> : (
                     <Table striped responsive bordered hover className="table-sm">
                         <thead>

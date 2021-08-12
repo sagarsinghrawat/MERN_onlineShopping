@@ -27,7 +27,7 @@ const PlaceOrderScreen = ({ history }) => {
         if( success ) {
             history.push(`/order/${order._id}`);
         }
-    }, [ success, history, order])
+    },[ success, history, order])
 
     const dispatch = useDispatch();
 

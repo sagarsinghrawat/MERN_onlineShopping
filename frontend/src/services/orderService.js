@@ -14,7 +14,8 @@ import {
     ORDER_LIST_MY_FAIL,
     ORDER_DELIVER_REQUEST,
     ORDER_DELIVER_SUCCESS,
-    ORDER_DELIVER_FAIL} from '../utils/orderConstants';
+    ORDER_DELIVER_FAIL,
+    ORDER_RESET} from '../utils/orderConstants';
 import errorHandler from '../errorHandler';
 export const createOrder = ( order ) => async( dispatch, getState ) => {
 
@@ -35,6 +36,7 @@ export const createOrder = ( order ) => async( dispatch, getState ) => {
             payload: data
         })
 
+        dispatch({type: ORDER_RESET })
     } catch (error) {
 
         dispatch({
